@@ -9,7 +9,7 @@ class CAT
         "It's cat, whose named is #{@cat_name}"
     end
     def meow
-        "Meow, motherfucker"
+        "Meow-meow"
     end
     def bite
         @bites_counter += 1
@@ -21,7 +21,7 @@ class CAT
     end
 end
 
-cat0 = CAT.new("Gay")
+cat0 = CAT.new("Barsik")
 puts cat0.who
 puts cat0.meow
 puts cat0.bite
