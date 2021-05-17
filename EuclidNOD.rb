@@ -1,29 +1,31 @@
 #EuclidNOD.rb
 
-def f_par_larger
-    $a = ARGV[0].to_i
-    $b = ARGV[1].to_i
+def f_par_larger(a, b)
+    a = ARGV[0].to_i
+    b = ARGV[1].to_i
 end
-def s_par_larger
-    $a = ARGV[1].to_i
-    $b = ARGV[0].to_i
+def s_par_larger(a, b)
+    a = ARGV[1].to_i
+    b = ARGV[0].to_i
 end
 def Euclid(a, b, ctrl)
     rem = a % b
-    if rem.to_i != 0 && rem.to_i != 1
+    if !rem.zero? && rem != 1
         return Euclid(b, rem, rem)
-    elsif rem.to_i == 0
+    elsif rem.zero?
         return b
     else
         return "Numbers are coprime"
     end
 end
 
-ARGV[0] > ARGV[1] ? f_par_larger : s_par_larger
-if $a == $b
+f = ARGV[0].to_i
+s = ARGV[1].to_i
+f,s = s,f if f < s
+if f == s
     puts "Numbers are equal"
-elsif $b.to_i == 0
+elsif s.to_i.zero?
     puts "One or two of the numbers are 0"
 else
-    puts Euclid($a, $b, 0)
+    puts Euclid(f, s, 0)
 end
