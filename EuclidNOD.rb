@@ -1,12 +1,12 @@
 #EuclidNOD.rb
 
 def f_par_larger
-    $a = ARGV[0]
-    $b = ARGV[1]
+    $a = ARGV[0].to_i
+    $b = ARGV[1].to_i
 end
 def s_par_larger
-    $a = ARGV[1]
-    $b = ARGV[0]
+    $a = ARGV[1].to_i
+    $b = ARGV[0].to_i
 end
 def Euclid(a, b, ctrl)
     rem = a % b
@@ -25,5 +25,5 @@ if $a == $b
 elsif $b.to_i == 0
     puts "One or two of the numbers are 0"
 else
-    puts Euclid($a.to_i, $b.to_i, 0)
+    puts Euclid($a, $b, 0)
 end
