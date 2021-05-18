@@ -19,15 +19,11 @@ def FindFactors(numb, max, i, arr_fact)
     return arr_fact
 end
 def AreInArray(n, arr_fact)
-    dop = 0
+    dop = false
     arr_fact.each do |val|
-        dop += 1 if (n % val).zero?
+        dop = true if (n % val).zero?
     end
-    if !dop.zero?
-        return true
-    else
-        return false
-    end
+    return dop
 end
 
 if ARGV[0] == nil
