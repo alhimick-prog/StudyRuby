@@ -45,7 +45,6 @@ else
     if arr_fact[0] == nil || arr_fact[0] == n
         puts "Number are prime"
     else
-        print arr_fact
-        puts ""
+        puts arr_fact.to_s
     end
 end
