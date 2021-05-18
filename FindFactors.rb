@@ -30,12 +30,20 @@ def AreInArray(n, arr_fact)
     end
 end
 
-arr_fact = Array.new
-n = ARGV[0].to_i
-arr_fact = FindFactors(n, n, 2, arr_fact)
-if arr_fact[0] == nil || arr_fact[0] == n
-    puts "Number are prime"
+if ARGV[0] == nil
+    puts "You not input number"
+elsif ARGV[0].to_i.zero?
+    puts "Are you kidding me? You input 0"
+elsif ARGV[0].to_i == 1
+    puts "Are you kidding me? You input 1"
 else
-    print arr_fact
-    puts ""
+    n = ARGV[0].to_i
+    arr_fact = Array.new
+    arr_fact = FindFactors(n, n, 2, arr_fact)
+    if arr_fact[0] == nil || arr_fact[0] == n
+        puts "Number are prime"
+    else
+        print arr_fact
+        puts ""
+    end
 end
