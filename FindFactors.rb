@@ -32,6 +32,8 @@ end
 
 if ARGV[0] == nil
     puts "You not input number"
+elsif ARGV[0].to_i < 0
+    puts "Number cannot be less than zero"
 elsif ARGV[0].to_i.zero?
     puts "Are you kidding me? You input 0"
 elsif ARGV[0].to_i == 1
