@@ -1,15 +1,14 @@
 #FindFactors.rb
 
-def FindFactors(numb, max, i, arr_fact)
-    if i <= max
+def FindFactors(numb, i, arr_fact)
+    if i <= numb
         if (numb % i).zero?
-            arr_fact << i if AreInArray(i, arr_fact) == false
             numb = numb / i
-            i += 1
-            arr_fact = FindFactors(numb, numb, i, arr_fact)
+            arr_fact << i if AreInArray(i, arr_fact) == false
+            arr_fact = FindFactors(numb, i, arr_fact)
         else
             i += 1
-            arr_fact = FindFactors(numb, numb, i, arr_fact)
+            arr_fact = FindFactors(numb, i, arr_fact)
         end
     else
         if (numb % i).zero?
@@ -37,10 +36,11 @@ elsif ARGV[0].to_i == 1
 else
     n = ARGV[0].to_i
     arr_fact = Array.new
-    arr_fact = FindFactors(n, n, 2, arr_fact)
+    arr_fact = FindFactors(n, 2, arr_fact)
     if arr_fact[0] == nil || arr_fact[0] == n
         puts "Number are prime"
     else
         puts arr_fact.to_s
+        print ""
     end
 end
