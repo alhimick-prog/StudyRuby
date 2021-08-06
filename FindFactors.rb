@@ -1,14 +1,17 @@
 #FindFactors.rb
+#This program search all prime divisor for number.
+#Input number like an argument in command line.
+#This is a bad version because it uses recursion and does not work with very large numbers.
 
-def FindFactors(numb, i, arr_fact)
+def findFactors(numb, i, arr_fact)
     if i <= numb
         if (numb % i).zero?
             numb = numb / i
-            arr_fact << i if AreInArray(i, arr_fact) == false
-            arr_fact = FindFactors(numb, i, arr_fact)
+            arr_fact << i if areInArray(i, arr_fact) == false
+            arr_fact = findFactors(numb, i, arr_fact)
         else
             i += 1
-            arr_fact = FindFactors(numb, i, arr_fact)
+            arr_fact = findFactors(numb, i, arr_fact)
         end
     else
         if (numb % i).zero?
@@ -17,7 +20,7 @@ def FindFactors(numb, i, arr_fact)
     end
     return arr_fact
 end
-def AreInArray(n, arr_fact)
+def areInArray(n, arr_fact)
     dop = false
     arr_fact.each do |val|
         dop = true if (n % val).zero?
@@ -36,7 +39,7 @@ elsif ARGV[0].to_i == 1
 else
     n = ARGV[0].to_i
     arr_fact = Array.new
-    arr_fact = FindFactors(n, 2, arr_fact)
+    arr_fact = findFactors(n, 2, arr_fact)
     if arr_fact[0] == nil || arr_fact[0] == n
         puts "Number are prime"
     else

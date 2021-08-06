@@ -1,17 +1,11 @@
 #EuclidNOD.rb
+#This program search greatest common divisor for two number with using Euclidean algorithm.
+#Input two number like argument in comand line.
 
-def f_par_larger(a, b)
-    a = ARGV[0].to_i
-    b = ARGV[1].to_i
-end
-def s_par_larger(a, b)
-    a = ARGV[1].to_i
-    b = ARGV[0].to_i
-end
-def Euclid(a, b, ctrl)
+def euclidean(a, b, ctrl)
     rem = a % b
     if !rem.zero? && rem != 1
-        return Euclid(b, rem, rem)
+        return euclidean(b, rem, rem)
     elsif rem.zero?
         return b
     else
@@ -24,8 +18,8 @@ s = ARGV[1].to_i
 f,s = s,f if f < s
 if f == s
     puts "Numbers are equal"
-elsif s.to_i.zero?
+elsif s.zero?
     puts "One or two of the numbers are 0"
 else
-    puts Euclid(f, s, 0)
+    puts euclidean(f, s, 0)
 end
