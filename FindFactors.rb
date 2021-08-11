@@ -3,47 +3,39 @@
 #Input number like an argument in command line.
 #This is a bad version because it uses recursion and does not work with very large numbers.
 
-def findFactors(numb, i, arr_fact)
-    if i <= numb
-        if (numb % i).zero?
-            numb = numb / i
-            arr_fact << i if areInArray(i, arr_fact) == false
-            arr_fact = findFactors(numb, i, arr_fact)
-        else
-            i += 1
-            arr_fact = findFactors(numb, i, arr_fact)
-        end
+def find_factors(numb, i, arr_fact)
+  if i <= numb
+    if (numb % i).zero?
+      numb = numb / i
+      arr_fact << i if !(are_in_array?(i, arr_fact))
+      arr_fact = find_factors(numb, i, arr_fact)
     else
-        if (numb % i).zero?
-            arr_fact << numb
-        end
+      i += 1
+      arr_fact = find_factors(numb, i, arr_fact)
     end
-    return arr_fact
+  else
+    if (numb % i).zero?
+      arr_fact << numb
+    end
+  end
+  arr_fact
 end
-def areInArray(n, arr_fact)
-    dop = false
-    arr_fact.each do |val|
-        dop = true if (n % val).zero?
-    end
-    return dop
+def are_in_array?(n, arr_fact)
+  in_array = false
+  arr_fact.each do |val|
+    in_array = true if (n % val).zero?
+  end
+  in_array
 end
 
-if ARGV[0] == nil
-    puts "You not input number"
-elsif ARGV[0].to_i < 0
-    puts "Number cannot be less than zero"
-elsif ARGV[0].to_i.zero?
-    puts "Are you kidding me? You input 0"
-elsif ARGV[0].to_i == 1
-    puts "Are you kidding me? You input 1"
+fail 'Incorrect input. Enter one number.' if !(ARGV.size == 1)
+fail 'Number cannot be less than zero.' if ARGV[0].to_i < 0
+fail 'Are you kidding me? You input 0!' if ARGV[0].to_i.zero?
+fail 'Are you kidding me? You input 1!' if ARGV[0].to_i == 1
+arr_fact = Array.new
+arr_fact = find_factors(ARGV[0].to_i, 2, arr_fact)
+if arr_fact[0] == nil || arr_fact[0] == ARGV[0].to_i
+  puts 'Number are prime'
 else
-    n = ARGV[0].to_i
-    arr_fact = Array.new
-    arr_fact = findFactors(n, 2, arr_fact)
-    if arr_fact[0] == nil || arr_fact[0] == n
-        puts "Number are prime"
-    else
-        puts arr_fact.to_s
-        print ""
-    end
+  puts arr_fact.to_s
 end
