@@ -29,23 +29,20 @@ class MegaGreeter
       puts "Goodbye #{@names}. Come back soon!"
     end
   end
-
 end
 
-if __FILE__ == $0
-  mg = MegaGreeter.new
-  mg.say_hi
-  mg.say_bye
-  
-  mg.names = 'Seva'
-  mg.say_hi
-  mg.say_bye
-  
-  mg.names = ['Sano', 'Bob', 'Jack', 'Dave']
-  mg.say_hi
-  mg.say_bye
-  
-  mg.names = nil
-  mg.say_hi
-  mg.say_bye
-end
+ mg = MegaGreeter.new
+ mg.say_hi
+ mg.say_bye
+
+mg.names = 'Seva'
+mg.say_hi
+mg.say_bye
+
+mg.names = ['Sano', 'Bob', 'Jack', 'Dave']
+mg.say_hi
+mg.say_bye
+
+mg.names = nil
+mg.say_hi
+mg.say_bye

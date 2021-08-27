@@ -8,6 +8,7 @@ def number_of_rows(matrix)
   }
   counter
 end
+
 def number_of_columns(matrix)
   counter = 1
   matrix.each_char { |symb|
@@ -16,11 +17,12 @@ def number_of_columns(matrix)
   }
   counter
 end
+
 def split_to_rows(matrix)
   lines = Array.new(number_of_rows(matrix)) {Array.new(number_of_columns(matrix))}
   current_row = 0
   current_column = 0
-  for i in 0..(matrix.size - 1) do
+  (0..(matrix.size - 1)).each do |i|
     if matrix[i] == " "
       current_column += 1
     elsif matrix[i] == "\n" || i == matrix.size
@@ -36,27 +38,29 @@ def split_to_rows(matrix)
   end
   lines
 end
+
 def split_to_columns(matrix)
   lines = split_to_rows(matrix)
   columns_numb = number_of_columns(matrix)
   rows_numb = number_of_rows(matrix)
   columns = Array.new(columns_numb) {Array.new(rows_numb)}
   counter = 0
-  for c in 0..(columns_numb - 1) do
+  (0..(columns_numb - 1)).each do |c|
     for r in 0..(rows_numb - 1) do
       columns[c][r] = lines[r][c]
     end
   end
   columns
 end
+
 def shares_and_display(matrix)
   fail 'Incorrect input.' if matrix.empty?
   puts 'Rows:'
-  for i in 0..(number_of_rows(matrix) - 1) do
+  (0..(number_of_rows(matrix) - 1)).each do |i|
     puts split_to_rows(matrix)[i].to_s
   end
   puts 'Columns:'
-  for i in 0..(number_of_columns(matrix) - 1) do
+  (0..(number_of_columns(matrix) - 1)).each do |i|
     puts split_to_columns(matrix)[i].to_s
   end
 end

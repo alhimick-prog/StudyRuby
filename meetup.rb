@@ -1,81 +1,79 @@
 #meetup.rb
 
 def meeting_year(meetup_string)
-  place = meetup_string =~ /[12]\d{3}/ #search year 1xxx-2xxx
-  year_of_meetup = String.new
+  place = meetup_string =~ /(1|2)\d{3}/ #search year 1xxx-2xxx
+  year_of_meetup = ''
   if !place.nil?
-    for i in place..(place + 3) do
-      if i == place
-        year_of_meetup = meetup_string[i]
-      else
-        year_of_meetup += meetup_string[i]
-      end
-    end
+    year_of_meetup = meetup_string[place..(place + 3)]
   end
   year_of_meetup
 end
+
 def month_of_meetup(meetup_string)
   month = 0
-  month = 1 if meetup_string =~ /[jJ]anuary/
-  month = 2 if meetup_string =~ /[fF]ebruary/
-  month = 3 if meetup_string =~ /[mM]arch/
-  month = 4 if meetup_string =~ /[aA]pril/
-  month = 5 if meetup_string =~ /[mM]ay/
-  month = 6 if meetup_string =~ /[jJ]une/
-  month = 7 if meetup_string =~ /[jJ]uly/
-  month = 8 if meetup_string =~ /[aA]ugust/
-  month = 9 if meetup_string =~ /[sS]eptember/
-  month = 10 if meetup_string =~ /[oO]ctober/
-  month = 11 if meetup_string =~ /[nN]ovember/
-  month = 12 if meetup_string =~ /[dD]ecember/
+  month = 1 if meetup_string =~ /(j|J)anuary/
+  month = 2 if meetup_string =~ /(f|F)ebruary/
+  month = 3 if meetup_string =~ /(m|M)arch/
+  month = 4 if meetup_string =~ /(a|A)pril/
+  month = 5 if meetup_string =~ /(m|M)ay/
+  month = 6 if meetup_string =~ /(j|J)une/
+  month = 7 if meetup_string =~ /(j|J)uly/
+  month = 8 if meetup_string =~ /(a|A)ugust/
+  month = 9 if meetup_string =~ /(s|S)eptember/
+  month = 10 if meetup_string =~ /(o|O)ctober/
+  month = 11 if meetup_string =~ /(n|N)ovember/
+  month = 12 if meetup_string =~ /(d|D)ecember/
   month
 end
+
 def day_of_week(meetup_string)
-  weekday_name = String.new
-  weekday_name = 'Sunday' if meetup_string =~ /[sS]unday/
-  weekday_name = 'Monday' if meetup_string =~ /[mM]onday/
-  weekday_name = 'Tuesday' if meetup_string =~ /[tT]uesday/
-  weekday_name = 'Wednesday' if meetup_string =~ /[wW]ednesday/
-  weekday_name = 'Thursday' if meetup_string =~ /[tT]hursday/
-  weekday_name = 'Friday' if meetup_string =~ /[fF]riday/
-  weekday_name = 'Saturday' if meetup_string =~ /[sS]aturday/
+  weekday_name = ''
+  weekday_name = 'Sunday' if meetup_string =~ /(s|S)unday/
+  weekday_name = 'Monday' if meetup_string =~ /(m|M)onday/
+  weekday_name = 'Tuesday' if meetup_string =~ /(t|T)uesday/
+  weekday_name = 'Wednesday' if meetup_string =~ /(w|W)ednesday/
+  weekday_name = 'Thursday' if meetup_string =~ /(t|T)hursday/
+  weekday_name = 'Friday' if meetup_string =~ /(f|F)riday/
+  weekday_name = 'Saturday' if meetup_string =~ /(s|S)aturday/
   weekday_name
 end
+
 def day_of_week_teenth(meetup_string)
-  day_teenth = String.new
-  day_teenth = 'Monday' if meetup_string =~ /[mM]onteenth/
-  day_teenth = 'Tuesday' if meetup_string =~ /[tT]uesteenth/
-  day_teenth = 'Wednesday' if meetup_string =~ /[wW]ednesteenth/
-  day_teenth = 'Thursday' if meetup_string =~ /[tT]hursteenth/
-  day_teenth = 'Friday' if meetup_string =~ /[fF]riteenth/
-  day_teenth = 'Saturday' if meetup_string =~ /[sS]aturteenth/
-  day_teenth = 'Sunday' if meetup_string =~ /[sS]unteenth/
+  day_teenth = ''
+  day_teenth = 'Monday' if meetup_string =~ /(m|M)onteenth/
+  day_teenth = 'Tuesday' if meetup_string =~ /(t|T)uesteenth/
+  day_teenth = 'Wednesday' if meetup_string =~ /(w|W)ednesteenth/
+  day_teenth = 'Thursday' if meetup_string =~ /(t|T)hursteenth/
+  day_teenth = 'Friday' if meetup_string =~ /(f|F)riteenth/
+  day_teenth = 'Saturday' if meetup_string =~ /(s|S)aturteenth/
+  day_teenth = 'Sunday' if meetup_string =~ /(s|S)unteenth/
   day_teenth
 end
+
 def search_adjective_of_weekday(meetup_string)
-  adjective_of_day = String.new
   adjective_of_day = nil
-  adjective_of_day = 1 if meetup_string =~ /[fF]irst/
-  adjective_of_day = 2 if meetup_string =~ /[sS]econd/
-  adjective_of_day = 3 if meetup_string =~ /[tT]hird/
-  adjective_of_day = 4 if meetup_string =~ /[fF]ourth/
-  adjective_of_day = 5 if meetup_string =~ /[fF]ifth/
-  adjective_of_day = 6 if meetup_string =~ /[lL]ast/
+  adjective_of_day = 1 if meetup_string =~ /(f|F)irst/
+  adjective_of_day = 2 if meetup_string =~ /(s|S)econd/
+  adjective_of_day = 3 if meetup_string =~ /(t|T)hird/
+  adjective_of_day = 4 if meetup_string =~ /(f|F)ourth/
+  adjective_of_day = 5 if meetup_string =~ /(f|F)ifth/
+  adjective_of_day = 6 if meetup_string =~ /(l|L)ast/
   adjective_of_day
 end
+
 def determine_mounth_day(meetup_string)
   year = meeting_year(meetup_string)
   month = month_of_meetup(meetup_string)
-  all_month = Array.new
+  all_month = []
   meeting_time = Time.new(year.to_i, month)
-  for i in 0..30 do
-    break if !((meeting_time + (60 * 60 * 24 * i)).strftime("%B") == meeting_time.strftime("%B"))
-    all_month[i] = (meeting_time + (60 * 60 * 24 * i)).strftime("%A")
+  i = 0
+  until !((meeting_time + (3600 * 24 * i)).strftime('%B') == meeting_time.strftime('%B'))
+    all_month[i] = (meeting_time + (3600 * 24 * i)).strftime('%A')
+    i += 1
   end
-  number_of_weekday = search_adjective_of_weekday(meetup_string)
-  if !(day_of_week(meetup_string) == '')
+  if !(day_of_week(meetup_string).empty?)
     number_of_weekday = search_adjective_of_weekday(meetup_string)
-    fail 'Number of weekday not found.' if number_of_weekday == nil
+    fail 'Number of weekday not found.' if number_of_weekday.nil?
     day_of_month = 0
     counter = 0
     if number_of_weekday == 5
@@ -95,9 +93,9 @@ def determine_mounth_day(meetup_string)
         break
       end
     end
-  elsif !(day_of_week_teenth(meetup_string) == '')
+  elsif !(day_of_week_teenth(meetup_string).empty?)
     weekday_name = day_of_week_teenth(meetup_string)
-    for i in 12..18 do
+    (12..18).each do |i|
       day_of_month = (i + 1) if all_month[i] == weekday_name
     end
   else
@@ -105,45 +103,46 @@ def determine_mounth_day(meetup_string)
   end
   day_of_month
 end
+
 def date_of_meetup(meetup_string)
   year = meeting_year(meetup_string)
-  fail 'Year could not be determined.' if year == ''
+  fail 'Year could not be determined.' if year.empty?
   month = month_of_meetup(meetup_string)
-  fail 'Month could not be determined.' if month == 0
+  fail 'Month could not be determined.' if month.zero?
   day = determine_mounth_day(meetup_string)
   meeting_time = Time.new(year, month, day)
 end
 
 meetup_string = 'saturteenth december 1999'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'monteenth of may 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'monteenth of august 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'first monday of march 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'first monday of april 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'second monday of march 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'second wednesday of august 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'fourth tuesday of june 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'last monday of march 2013'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 meetup_string = 'first friday of december 2012'
 puts meetup_string
-puts date_of_meetup(meetup_string).strftime("%Y/%m/%d")
+puts date_of_meetup(meetup_string).strftime('%Y/%m/%d')
 
 #diagnostic information
 #puts meeting_year(meetup_string)

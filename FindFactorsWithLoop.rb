@@ -16,6 +16,7 @@ def find_factors(numb, arr_fact)
   end
   arr_fact
 end
+
 def are_in_array?(n, arr_fact)
   in_array = false
   arr_fact.each do |val|
@@ -29,9 +30,9 @@ fail 'Number cannot be less than zero.' if ARGV[0].to_i < 0
 fail 'Are you kidding me? You input 0!' if ARGV[0].to_i.zero?
 fail 'Are you kidding me? You input 1!' if ARGV[0].to_i == 1
 
-arr_fact = Array.new
+arr_fact = []
 arr_fact = find_factors(ARGV[0].to_i, arr_fact)
-if arr_fact[0] == nil || arr_fact[0] == ARGV[0].to_i
+if arr_fact[0].nil? || arr_fact[0] == ARGV[0].to_i
   puts 'Number are prime'
 else
   puts arr_fact.to_s

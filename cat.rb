@@ -26,7 +26,6 @@ class Cat
   def self.all_bites
     "All bites: #{@@all_bites_counter}"
   end
-
 end
 
 cat0 = Cat.new('Barsik')
