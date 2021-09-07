@@ -11,9 +11,10 @@ end
 
 def number_of_columns(matrix)
   counter = 1
+  ins_counter = 1
   matrix.each_char { |symb|
-    counter += 1 if symb == " "
-    break if symb == "\n"
+    ins_counter += 1 if symb == " "
+    counter = ins_counter if symb == "\n"
   }
   counter
 end
